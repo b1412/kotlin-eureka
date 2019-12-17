@@ -1,0 +1,55 @@
+apply plugin: 'org.springframework.boot'
+apply plugin: 'kotlin'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'io.spring.dependency-management'
+
+version = "0.0.1-SNAPSHOT"
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter:${springBootVersion}")
+    compile('org.springframework.cloud:spring-cloud-starter-eureka-server:1.4.5.RELEASE')
+    compile('org.springframework.cloud:spring-cloud-starter-config')
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    compile 'net.logstash.logback:logstash-logback-encoder:4.11'
+
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+buildscript {
+    ext {
+        springCloudVersion = 'Finchley.SR1'
+        springBootVersion = '2.0.4.RELEASE'
+        dependencyManagementVersion = '1.0.6.RELEASE'
+        dockerPluginVersion = "1.2"
+        kotlinVersion = '1.2.60'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementVersion}")
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+    }
+}
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}

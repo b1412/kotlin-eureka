@@ -1,0 +1,11 @@
+server:
+    port: 8761
+spring:
+    application:
+        name: eureka
+    cloud:
+        config:
+            name: eureka
+            uri: http://kotlin-config:7777
+            username: leonzhou
+            password: configpassword
