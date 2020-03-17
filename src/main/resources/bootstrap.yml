@@ -6,6 +6,6 @@ spring:
     cloud:
         config:
             name: eureka
-            uri: http://kotlin-config:7777
+            uri: http://config:7777
             username: leonzhou
             password: configpassword
