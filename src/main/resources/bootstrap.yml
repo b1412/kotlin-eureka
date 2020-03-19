@@ -6,6 +6,6 @@ spring:
     cloud:
         config:
             name: eureka
-            uri: http://config:7777
+            uri: http://config
             username: leonzhou
             password: configpassword
