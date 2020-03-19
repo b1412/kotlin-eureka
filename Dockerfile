@@ -16,7 +16,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-ENTRYPOINT dockerize -timeout 5m  -wait "http://config/application/native,prod" && java $JAVA_OPTS -jar /opt/eureka/lib/app.jar $SPRING_BOOT_PROFILE
+ENTRYPOINT dockerize -timeout 5m  -wait "http://config:7777/application/native,prod" && java $JAVA_OPTS -jar /opt/eureka/lib/app.jar $SPRING_BOOT_PROFILE
 
 EXPOSE 8761 8761
 
